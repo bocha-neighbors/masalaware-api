@@ -31,6 +31,12 @@ class RequestsController < ApplicationController
       flash[:success] = "Your request has been deleted."
   end
 
+  def index
+    @requests = Request.all
+    render :json => @requests
+  end
+
   def request_params
     params.require(:request).permit(:urgency_scale, :location, :category, :description, :actions_attempted)
+  end
 end
